@@ -1,9 +1,14 @@
 package br.inatel.pos.dm111.vfp.promotion;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
+
 import br.inatel.pos.dm111.vfp.event.EventPublisher;
 import br.inatel.pos.dm111.vfp.event.PromotionCreatedEvent;
-import java.util.*;
 
 @Service
 public class PromotionService {
@@ -45,5 +50,12 @@ public class PromotionService {
 
     public void delete(Long id) {
         promotions.remove(id);
+    }
+
+    public List<Promotion> listByCategories(List<String> categories) {
+        return promotions.values().stream()
+            .filter(promotion -> promotion.getCategories().stream()
+                .anyMatch(categories::contains))
+            .collect(java.util.stream.Collectors.toList());
     }
 }

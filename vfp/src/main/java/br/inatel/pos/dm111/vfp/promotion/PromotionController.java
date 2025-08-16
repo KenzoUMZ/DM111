@@ -1,8 +1,8 @@
-
 package br.inatel.pos.dm111.vfp.promotion;
 
 import org.springframework.web.bind.annotation.*;
-import java.util.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/promotions")
@@ -39,7 +39,7 @@ public class PromotionController {
 
     @PutMapping("/{id}")
     public Promotion updatePromotion(@PathVariable Long id, @RequestBody Promotion promotion,
-            @RequestParam String userType) {
+                                     @RequestParam String userType) {
         if (!"RESTAURANT".equalsIgnoreCase(userType)) {
             throw new RuntimeException("Apenas usuários do tipo RESTAURANT podem atualizar promoções.");
         }

@@ -1,5 +1,14 @@
 package br.inatel.pos.dm111.vfu.api.user.service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 import br.inatel.pos.dm111.vfu.api.core.ApiException;
 import br.inatel.pos.dm111.vfu.api.core.AppErrorCode;
 import br.inatel.pos.dm111.vfu.api.user.PasswordEncryptor;
@@ -7,14 +16,6 @@ import br.inatel.pos.dm111.vfu.api.user.UserRequest;
 import br.inatel.pos.dm111.vfu.api.user.UserResponse;
 import br.inatel.pos.dm111.vfu.persistence.user.User;
 import br.inatel.pos.dm111.vfu.persistence.user.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 
 @Service
 public class UserService {
@@ -97,35 +98,31 @@ public class UserService {
         var encryptedPwd = encryptor.encrypt(request.password());
         var userId = UUID.randomUUID().toString();
         return new User(
-            userId,
-            request.name(),
-            request.email(),
-            encryptedPwd,
-            User.UserType.valueOf(request.type()),
-            request.preferredCategories()
-        );
+                userId,
+                request.name(),
+                request.email(),
+                encryptedPwd,
+                User.UserType.valueOf(request.type()),
+                request.preferredCategories());
     }
 
     private User buildUser(UserRequest request, String id) {
         var encryptedPwd = encryptor.encrypt(request.password());
         return new User(
-            id,
-            request.name(),
-            request.email(),
-            encryptedPwd,
-            User.UserType.valueOf(request.type()),
-            request.preferredCategories()
-        );
+                id,
+                request.name(),
+                request.email(),
+                encryptedPwd,
+                User.UserType.valueOf(request.type()),
+                request.preferredCategories());
     }
 
     private UserResponse buildUserResponse(User user) {
         return new UserResponse(
-            user.id(),
-            user.name(),
-            user.email(),
-            user.type().name(),
-            user.preferredCategories()
-        );
+                user.id(),
+                user.name(),
+                user.email(),
+                user.type().name());
     }
 
     private List<User> retrieveUsers() throws ApiException {
