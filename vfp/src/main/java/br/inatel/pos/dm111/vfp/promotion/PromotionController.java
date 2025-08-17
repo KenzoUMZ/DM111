@@ -1,8 +1,16 @@
 package br.inatel.pos.dm111.vfp.promotion;
 
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/promotions")
@@ -20,10 +28,7 @@ public class PromotionController {
     }
 
     @PostMapping
-    public Promotion createPromotion(@RequestBody Promotion promotion, @RequestParam String userType) {
-        if (!"RESTAURANT".equalsIgnoreCase(userType)) {
-            throw new RuntimeException("Apenas usuários do tipo RESTAURANT podem criar promoções.");
-        }
+    public Promotion createPromotion(@RequestBody Promotion promotion) {
         return promotionService.create(promotion);
     }
 
@@ -38,19 +43,12 @@ public class PromotionController {
     }
 
     @PutMapping("/{id}")
-    public Promotion updatePromotion(@PathVariable Long id, @RequestBody Promotion promotion,
-                                     @RequestParam String userType) {
-        if (!"RESTAURANT".equalsIgnoreCase(userType)) {
-            throw new RuntimeException("Apenas usuários do tipo RESTAURANT podem atualizar promoções.");
-        }
+    public Promotion updatePromotion(@PathVariable Long id, @RequestBody Promotion promotion) {
         return promotionService.update(id, promotion);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePromotion(@PathVariable Long id, @RequestParam String userType) {
-        if (!"RESTAURANT".equalsIgnoreCase(userType)) {
-            throw new RuntimeException("Apenas usuários do tipo RESTAURANT podem deletar promoções.");
-        }
+    public void deletePromotion(@PathVariable Long id) {
         promotionService.delete(id);
     }
 }
