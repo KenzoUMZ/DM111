@@ -166,7 +166,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Edilson\",\n    \"email\": \"edilson@gmail.com\",\n    \"password\": \"admin\",\n    \"type\": \"REGULAR\"\n}",
+							"raw": "{\n    \"name\": \"Edilson\",\n    \"email\": \"edilson@gmail.com\",\n    \"password\": \"admin\",\n    \"type\": \"REGULAR\",\n    \"preferredCategories\": [\"cat1\", \"cat2\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -200,7 +200,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Edilson R\",\n    \"email\": \"edilson.restaurant@gmail.com\",\n    \"password\": \"admin\",\n    \"type\": \"RESTAURANT\"\n}",
+							"raw": "{\n    \"name\": \"Edilson R\",\n    \"email\": \"edilson.restaurant@gmail.com\",\n    \"password\": \"admin\",\n    \"type\": \"RESTAURANT\",\n    \"preferredCategories\": [\"cat1\", \"cat2\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -236,7 +236,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Edilson\",\n    \"email\": \"edilson@gmail.com\",\n    \"password\": \"admin\",\n    \"type\": \"REGULAR\"\n}",
+							"raw": "{\n    \"name\": \"Edilson\",\n    \"email\": \"edilson@gmail.com\",\n    \"password\": \"admin\",\n    \"type\": \"REGULAR\",\n    \"preferredCategories\": [\"cat1\", \"cat2\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
